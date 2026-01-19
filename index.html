@@ -1,36 +1,294 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Legacy </title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Legacy</title>
+
+  <!-- Fonts: elegant serif for masthead + modern sans for nav/body -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500,650&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
   <style>
-    body {
-      font-family: Georgia, serif;
+    :root{
+      /* Palette: beige + warm brown + blue accent */
+      --bg: #F4EFE6;          /* soft beige */
+      --surface: #FBF7F1;     /* lighter panel */
+      --text: #201A14;        /* deep brown/near-black */
+      --muted: #6B5E52;       /* warm gray-brown */
+      --rule: rgba(32,26,20,.12);
+      --accent: #2E6F9E;      /* blue accent */
+      --accent-2: #8B5E34;    /* warm brown accent (subtle) */
+
+      --radius: 18px;
+      --shadow: 0 18px 60px rgba(32,26,20,.10);
+    }
+
+    *{ box-sizing: border-box; }
+    html,body{ height:100%; }
+    body{
+      margin:0;
+      background:
+        radial-gradient(1200px 600px at 10% 0%, rgba(46,111,158,.10), transparent 60%),
+        radial-gradient(900px 500px at 90% 10%, rgba(139,94,52,.10), transparent 55%),
+        var(--bg);
+      color:var(--text);
+      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+      line-height: 1.4;
+    }
+
+    /* Layout */
+    .wrap{
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 28px 22px 64px;
+    }
+
+    /* Top bar */
+    header{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap: 16px;
+      padding: 14px 14px;
+      background: rgba(251,247,241,.72);
+      border: 1px solid var(--rule);
+      border-radius: var(--radius);
+      box-shadow: 0 10px 30px rgba(32,26,20,.06);
+      backdrop-filter: blur(10px);
+      position: sticky;
+      top: 16px;
+      z-index: 10;
+    }
+
+    .brand{
+      display:flex;
+      align-items:baseline;
+      gap: 10px;
+      padding-left: 6px;
+      min-width: 160px;
+    }
+    .brand a{
+      font-family: Fraunces, Georgia, serif;
+      font-weight: 650;
+      letter-spacing: .2px;
+      text-decoration:none;
+      color: var(--text);
+      font-size: 18px;
+      line-height: 1;
+    }
+    .brand .dot{
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+      background: var(--accent);
+      display:inline-block;
+      transform: translateY(-1px);
+    }
+
+    nav{
+      display:flex;
+      gap: 10px;
+      align-items:center;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+    nav a{
+      text-decoration:none;
+      color: var(--muted);
+      font-weight: 600;
+      font-size: 14px;
+      padding: 10px 12px;
+      border-radius: 12px;
+      border: 1px solid transparent;
+    }
+    nav a:hover{
+      color: var(--text);
+      border-color: rgba(46,111,158,.25);
+      background: rgba(46,111,158,.06);
+    }
+    nav a.active{
+      color: var(--text);
+      background: rgba(46,111,158,.10);
+      border-color: rgba(46,111,158,.30);
+    }
+
+    /* Hero */
+    .hero{
+      margin-top: 32px;
+      padding: 44px 36px;
+      border-radius: calc(var(--radius) + 6px);
+      background: linear-gradient(180deg, rgba(251,247,241,.82), rgba(251,247,241,.70));
+      border: 1px solid var(--rule);
+      box-shadow: var(--shadow);
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before{
+      content:"";
+      position:absolute;
+      inset:-2px;
+      background:
+        radial-gradient(700px 340px at 12% 30%, rgba(46,111,158,.16), transparent 60%),
+        radial-gradient(620px 320px at 85% 25%, rgba(139,94,52,.14), transparent 58%);
+      pointer-events:none;
+    }
+    .hero-inner{
+      position: relative;
+      max-width: 820px;
+    }
+
+    h1{
+      margin: 0 0 18px 0;
+      font-family: Fraunces, Georgia, serif;
+      font-weight: 650;
+      font-size: clamp(54px, 8vw, 96px);
+      letter-spacing: -0.8px;
+      line-height: 0.95;
+    }
+    .subtitle{
+      margin: 0 0 24px 0;
+      font-size: clamp(18px, 2.1vw, 24px);
+      color: var(--text);
+      font-weight: 500;
+    }
+
+    .meta{
+      display:flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-top: 6px;
+    }
+    .pill{
+      display:inline-flex;
+      align-items:center;
+      gap: 8px;
+      padding: 10px 12px;
+      border-radius: 999px;
+      background: rgba(32,26,20,.04);
+      border: 1px solid rgba(32,26,20,.10);
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 600;
+    }
+    .pill b{
+      color: var(--text);
+      font-weight: 700;
+    }
+    .pill .marker{
+      width: 9px; height: 9px; border-radius: 999px; background: var(--accent);
+    }
+
+    /* Lower section (optional placeholder area) */
+    .lower{
+      margin-top: 22px;
+      display:grid;
+      grid-template-columns: 1.2fr .8fr;
+      gap: 16px;
+    }
+
+    .card{
+      background: rgba(251,247,241,.78);
+      border: 1px solid var(--rule);
+      border-radius: var(--radius);
+      padding: 18px 18px;
+      box-shadow: 0 10px 30px rgba(32,26,20,.05);
+      min-height: 120px;
+    }
+    .card h2{
+      margin: 0 0 8px 0;
+      font-size: 14px;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+    .card p{
       margin: 0;
-      padding: 4rem;
-      background: #ffffff;
-      color: #111;
+      color: var(--text);
+      font-size: 15px;
       line-height: 1.6;
     }
-    h1 {
-      font-size: 3rem;
-      margin-bottom: 1rem;
+
+    .link{
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 700;
     }
-    p {
-      max-width: 600px;
-      font-size: 1.1rem;
+    .link:hover{ text-decoration: underline; }
+
+    footer{
+      margin-top: 28px;
+      color: rgba(32,26,20,.55);
+      font-size: 13px;
+      padding: 0 4px;
+    }
+
+    /* Responsive */
+    @media (max-width: 860px){
+      .lower{ grid-template-columns: 1fr; }
+      header{ position: static; }
     }
   </style>
 </head>
-<div class="wrap">
-  <nav>
-    <a href="index.html">Home</a>
-    <a href="essays.html">Essays</a>
-    <a href="about.html">About</a>
-  </nav>
 
-  <h1>Legacy</h1>
-  <p>Narratives on culture, memory, and meaning.</p>
-</div>
+<body>
+  <div class="wrap">
+    <header>
+      <div class="brand">
+        <a href="index.html" aria-label="Legacy home">Legacy</a>
+        <span class="dot" aria-hidden="true"></span>
+      </div>
+
+      <nav aria-label="Primary navigation">
+        <a class="active" href="index.html">Home</a>
+        <a href="essays.html">Essays</a>
+        <a href="about.html">About</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero" aria-label="Homepage hero">
+        <div class="hero-inner">
+          <h1>Legacy</h1>
+          <p class="subtitle">Narratives on culture, memory, and meaning.</p>
+
+          <div class="meta" aria-label="Site meta">
+            <span class="pill"><span class="marker" aria-hidden="true"></span><b>Independent</b> publication</span>
+            <span class="pill"><b>Essays</b> + research-driven writing</span>
+            <span class="pill">Built on <b>GitHub Pages</b></span>
+          </div>
+        </div>
+      </section>
+
+      <!-- Optional placeholders you can keep or delete -->
+      <section class="lower" aria-label="Homepage content">
+        <div class="card">
+          <h2>Start here</h2>
+          <p>
+            Begin with the essays as they’re published. For now, you can outline upcoming topics and
+            keep this space as a quiet editorial landing page.
+            When you’re ready, link your first piece here as a featured essay.
+          </p>
+        </div>
+
+        <div class="card">
+          <h2>Next</h2>
+          <p>
+            Update <a class="link" href="essays.html">Essays</a> with your first post when you’re ready.
+            Your domain will display these updates automatically once DNS finishes propagating.
+          </p>
+        </div>
+      </section>
+
+      <footer>
+        © <span id="y"></span> Legacy. All rights reserved.
+      </footer>
+    </main>
+  </div>
+
+  <script>
+    document.getElementById("y").textContent = new Date().getFullYear();
+  </script>
+</body>
 </html>
