@@ -1,0 +1,711 @@
+@font-face{
+  font-family: "LegacyDisplay";
+  src: url("fonts/Legacy.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face{
+  font-family: "LegacyHead";
+  src: url("fonts/LegacyHead.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face{
+  font-family: "LegacyBody";
+  src: url("fonts/LegacyBody.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root{
+  /* primary warm palette (your values) */
+  --sun: #fefe5b;
+  --orange: #fa6c1a;
+  --nearblack: #1b0500;
+  --ember: #be5714;
+  --brick: #c13d15;
+  --rust: #e38425;
+
+  /* muted variants for UI */
+  --muted-ember: rgba(190,87,20,.18);
+  --muted-orange: rgba(250,108,26,.14);
+  --muted-sun: rgba(254,254,91,.12);
+
+  /* neutrals */
+  --bg: #f6f1ea;        /* warm, soft background (veil-like) */
+  --ink: #1b1c15;
+  --ink-soft: rgba(27,28,21,.72);
+  --ink-2: rgba(27,28,21,.60);  /* added so var(--ink-2) works */
+  --rule: rgba(27,28,21,.12);
+
+  --max: 1100px;
+}
+
+section,
+main,
+footer{
+  background-color: transparent;
+}
+
+*{ box-sizing: border-box; }
+html,body{ height: 100%; }
+body{
+  margin: 0;
+background: #f6f1ea;   /* soft parchment */
+/* background: #1b0500;   /* near-black ember (very dramatic) */ */
+  color: var(--ink);
+  line-height: 1.5;
+  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
+}
+
+a{ color: inherit; }
+
+/* ===== Header (transparent over hero) ===== */
+.site-header{
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  z-index: 20;
+  padding: 18px 22px;
+}
+
+.navbar{
+  max-width: var(--max);
+  margin: 0 auto;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap: 16px;
+}
+
+.brand{
+  /* Larger Legacy logo */
+  font-size: 16px;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: rgba(239,233,223,.95); /* veil */
+  text-decoration: none;
+  font-weight: 700;
+}
+
+.nav{
+  display:flex;
+  align-items:center;
+  gap: 18px;
+}
+
+.nav a{
+  color: rgba(239,233,223,.90);
+  text-decoration: none;
+  font-size: 12px;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  padding: 10px 8px;
+  border-radius: 10px;
+}
+
+.nav a:hover{
+  color: rgba(239,233,223,1);
+  text-decoration: underline;
+  text-underline-offset: 6px;
+  text-decoration-thickness: 1px;
+  text-decoration-color: rgba(239,233,223,.55);
+}
+
+/* ===== Hero ===== */
+.hero{
+  position: relative;
+  height: 100vh;           /* full screen height */
+  min-height: 100vh;       /* ensure full length */
+  display:flex;
+  align-items:flex-end;
+  overflow:hidden;
+  background: #0d0b0a;
+}
+
+.hero-media{
+  position:absolute;
+  inset:0;
+  background-size: cover;
+  background-position: center;
+  transform: scale(1.03);
+  filter: saturate(.98) contrast(1.02);
+}
+
+/* Simpler vignette/overlay (older version) */
+.hero::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:
+    linear-gradient(180deg, rgba(0,0,0,.55) 0%, rgba(0,0,0,.20) 40%, rgba(0,0,0,.62) 100%);
+  z-index: 1;
+}
+
+.hero-inner{
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: var(--max);
+  margin: 0 auto;
+  padding: 140px 22px 86px;
+}
+
+.hero-quote{
+  max-width: 760px;
+  margin-left: auto;
+  color: rgba(239,233,223,.95); /* veil */
+  font-family: ui-serif, Georgia, "Times New Roman", Times, serif;
+}
+
+.hero-quote blockquote{
+  margin: 0 0 14px 0;
+  font-size: clamp(26px, 3vw, 40px);
+  line-height: 1.25;
+  letter-spacing: -.01em;
+}
+
+.hero-quote .attrib{
+  color: rgba(239,233,223,.78);
+  font-size: 14px;
+  letter-spacing: .02em;
+}
+
+.scroll-indicator{
+  position:absolute;
+  right: 22px;
+  bottom: 18px;
+  z-index: 3;
+  display:inline-flex;
+  align-items:center;
+  gap: 10px;
+  color: rgba(239,233,223,.88);
+  text-decoration:none;
+  font-size: 12px;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+}
+
+.scroll-indicator .arrow{
+  width: 34px; height: 34px;
+  border-radius: 999px;
+  border: 1px solid rgba(239,233,223,.35);
+  display:grid;
+  place-items:center;
+  backdrop-filter: blur(10px);
+}
+
+/* ===== MAIN ===== */
+.main{
+  padding: 56px 22px 72px;
+}
+
+.container{
+  max-width: var(--max);
+  margin: 0 auto;
+}
+
+
+/* ADDED IMAGE BACKGROUND */
+
+/* Background image for everything after the statement */
+.main{
+  background-image:
+    linear-gradient(rgba(246,241,234,.88), rgba(246,241,234,.70)),
+    url("images/editorial-bg.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: scroll; /* safe for mobile */
+}
+
+/* Optional: if you want the image texture a bit stronger, reduce .88 -> .80 */
+
+
+/* ===== STATEMENT ===== */
+
+/* ===== Statement band — clean, no image; muted ember palette ===== */
+.statement{
+  position: relative;
+  overflow: visible;
+  background: linear-gradient(180deg, rgba(27,5,0,.02), rgba(27,5,0,.02)); /* subtle warmth */
+  padding: 72px 22px;
+  color: var(--ember);
+}
+
+/* small, centered ornament + rule above the cards (the spacing detail you liked) */
+.section-rule{
+  width: 100%;
+  display:flex;
+  justify-content:center;
+  margin: 46px 0; /* spacing that visually separates sections */
+  align-items:center;
+  gap: 18px;
+}
+
+.section-rule .line{
+  height: 1px;
+  width: 220px;
+  background: linear-gradient(90deg, transparent, var(--rule), transparent);
+  opacity: .95;
+}
+
+.section-rule svg{
+  width: 14px;
+  height: 14px;
+  fill: none;
+  stroke: var(--rule);
+  stroke-width: 1;
+  opacity: .9;
+}
+
+/* watermark "Legacy" smaller and subtle behind copy */
+.statement-watermark{
+  position: absolute;
+  left: 50%;
+  top: 30%;
+  transform: translate(-50%, -20%);
+  font-family: "LegacyDisplay", Georgia, "Times New Roman", serif;
+  font-size: clamp(72px, 8vw, 140px);     /* smaller than previous, still large */
+  line-height: .9;
+  color: var(--nearblack);
+  opacity: .08;                            /* very low opacity */
+  letter-spacing: .02em;
+  pointer-events: none;
+  user-select: none;
+  z-index: 0;
+  mix-blend-mode: multiply;
+}
+
+/* foreground statement copy — different font, centered, overlaps the watermark */
+.statement-inner{
+  position: relative;
+  z-index: 2;
+  max-width: var(--max);
+  margin: 0 auto;
+  text-align: center;
+  padding: 8px 18px;
+}
+
+.statement-title{
+  margin: 0 0 12px;
+  font-family: "SourceSerifPro", Georgia, "Times New Roman", serif; /* change to your serif if you have one */
+  font-size: clamp(20px, 3.2vw, 34px);
+  color: var(--nearblack);
+  font-weight: 400;
+  letter-spacing: .01em;
+}
+
+.statement-copy{
+  margin: 0 auto;
+  max-width: 78ch;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(16px, 1.9vw, 20px);
+  color: var(--ink-soft);
+  line-height: 1.65;
+}
+
+/* subtle visual rule below the statement band (optional) */
+.statement-footer{
+  margin-top: 28px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--muted-ember), transparent);
+  opacity: .6;
+  width: 86%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* a little breathing room between the two sentences */
+.statement-copy p{
+  margin: 0 0 10px;
+}
+
+/* ===== EDITORIAL rows (floating text) — more spacing, no kicker ===== */
+
+/* ------------ Consolidated editorial layout (replace all existing editorial-row blocks) --------- */
+
+.editorial-row{
+  max-width: var(--max);
+  margin: 0 auto 160px;   /* more separation between rows */
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr; /* bias so left column slightly larger */
+  gap: 48px;                          /* space between image and text */
+  align-items: center;
+  box-sizing: border-box;
+}
+
+/* Mirror bias for reverse rows */
+.editorial-row.reverse {
+  grid-template-columns: 0.85fr 1.15fr;
+}
+
+/* Explicitly place direct children into columns to avoid selector conflicts */
+.editorial-row > .editorial-image { grid-column: 1; }
+.editorial-row > .editorial-text  { grid-column: 2; }
+
+.editorial-row.reverse > .editorial-text  { grid-column: 1; }
+.editorial-row.reverse > .editorial-image { grid-column: 2; }
+
+/* editorial-image rules */
+.editorial-image{
+  width: 100%;
+  max-width: 440px;          /* smaller */
+  margin: 0 auto;
+  aspect-ratio: 4 / 3;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  border-radius: 18px;       /* rounded edges */
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(27,5,0,.10);
+}
+
+/* editorial text rules */
+.editorial-text {
+  max-width: 56ch;
+  padding-left: 40px;   /* inward padding toward image for normal layout */
+  padding-right: 20px;
+  box-sizing: border-box;
+}
+
+/* reversed rows: bias padding inward away from the viewport */
+.editorial-row.reverse .editorial-text {
+  padding-left: 20px;
+  padding-right: 40px;
+}
+
+/* typography and spacing for editorial content */
+.editorial-kicker{ display:none; }
+.editorial-title{
+  margin: 0 0 12px;
+  font-family: "LegacyHead", ui-serif, Georgia, "Times New Roman", Times, serif;
+  font-size: 34px;
+  line-height: 1.12;
+}
+
+.editorial-desc{
+  margin: 0 0 18px;
+  color: var(--ink-2);
+  font-family: "LegacyBody", ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
+  font-size: 16px;
+  line-height: 1.75;
+}
+
+/* mobile: stack and reset padding */
+@media (max-width: 900px) {
+  .editorial-row,
+  .editorial-row.reverse {
+    grid-template-columns: 1fr;
+    gap: 28px;
+    margin-bottom: 64px;
+  }
+  .editorial-row > .editorial-image,
+  .editorial-row > .editorial-text {
+    grid-column: 1;
+  }
+  .editorial-image { min-height: 320px; max-width: 100%; }
+  .editorial-text { padding-left: 20px; padding-right: 20px; }
+}
+
+/* Responsive */
+@media (max-width: 900px){
+  .statement{ padding: 64px 22px; }
+  .editorial-row,
+  .editorial-row.reverse{
+    grid-template-columns: 1fr;
+    gap: 28px;
+    margin-bottom: 84px;
+  }
+  .editorial-image{
+    max-width: 720px;
+    aspect-ratio: 16 / 10;
+  }
+}
+
+/* ===== Scroll-down editorial rows (floating text, no blocks) ===== */
+
+.main{
+  padding: 68px 22px 84px;
+}
+
+.editorial-row{
+  max-width: var(--max);
+  margin: 0 auto 160px;   /* more separation between rows */
+  display: grid;
+  grid-template-columns: 1.15fr .85fr; /* more space on the left */
+  gap: 56px;
+  align-items: center;
+}
+
+.editorial-row.reverse{
+  grid-template-columns: .85fr 1.15fr; /* more space on the right */
+}
+
+.editorial-image{
+  width: 100%;
+  max-width: 440px;          /* keeps it like the screenshot: not full-bleed */
+  margin: 0 auto;
+  aspect-ratio: 4 / 3;       /* tall editorial image */
+  background: #ddd;
+  background-size: cover;
+  background-position: center;
+}
+
+.editorial-text{
+  max-width: 46ch;
+}
+
+.editorial-kicker{
+  margin: 0 0 14px;
+  font-size: 12px;
+  letter-spacing: .26em;
+  text-transform: uppercase;
+  color: rgba(151,169,164,.95); /* mist */
+  font-weight: 650;
+}
+
+.editorial-title{
+  margin: 0 0 12px;
+  font-family: ui-serif, Georgia, "Times New Roman", Times, serif;
+  font-size: 34px;
+  line-height: 1.12;
+  letter-spacing: -.01em;
+}
+
+.editorial-title a{
+  text-decoration:none;
+}
+
+.editorial-title a:hover{
+  text-decoration: underline;
+  text-underline-offset: 6px;
+  text-decoration-thickness: 1px;
+  text-decoration-color: rgba(109,59,47,.35); /* clay */
+}
+
+.editorial-desc{
+  margin: 0 0 18px;
+  color: var(--ink-2);
+  font-size: 16px;
+  line-height: 1.75;
+}
+
+.editorial-more{
+  display:inline-flex;
+  align-items:center;
+  gap: 10px;
+  font-size: 12px;
+  letter-spacing: .22em;
+  text-transform: uppercase;
+  color: rgba(23,19,16,.55);
+  text-decoration:none;
+}
+
+.editorial-more:hover{
+  color: rgba(23,19,16,.85);
+}
+
+/* Ensure editorial text never hugs the edge */
+.editorial-text{
+  padding-left: 24px;
+  padding-right: 24px;
+}
+
+/* When text is on the left, bias padding inward */
+.editorial-row.reverse .editorial-text{
+  padding-left: 0;
+  padding-right: 48px;
+}
+
+/* When text is on the right, bias padding inward */
+.editorial-row:not(.reverse) .editorial-text{
+  padding-left: 48px;
+  padding-right: 0;
+}
+
+
+/* A very subtle center ornament line like the screenshot (optional) */
+.ornament{
+  max-width: var(--max);
+  margin: 0 auto 54px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap: 14px;
+  color: rgba(23,19,16,.35);
+}
+
+.ornament::before,
+.ornament::after{
+  content:"";
+  height: 1px;
+  width: 160px;
+  background: rgba(23,19,16,.12);
+}
+
+.ornament svg{
+  opacity: .55;
+}
+
+/* Responsive */
+@media (max-width: 900px){
+  .editorial-row,
+  .editorial-row.reverse{
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+  .editorial-image{
+    max-width: 620px;
+    aspect-ratio: 16 / 10;
+  }
+}
+
+/* Footer */
+.footer{
+  background: var(--nearblack);   /* #1b0500 */
+  border-top: 1px solid rgba(243,211,66,.12);
+  padding: 26px 22px;
+  color: rgba(246,241,234,.78);
+  font-size: 13px;
+}
+
+.footer a{
+  color: rgba(243,211,66,.85);
+  text-decoration: none;
+}
+
+.footer a:hover{
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+.footer .container{
+  display:flex;
+  justify-content:space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+
+/* Responsive */
+@media (max-width: 900px){
+  .editorial{ grid-template-columns: 1fr; }
+  .hero-inner{ padding-top: 120px; }
+  .hero-quote{ margin-left: 0; }
+}
+
+/* ===== Minimal two-column (Option 2) override — paste at end of styles.css ===== */
+/* Keeps image & text in two columns but biases columns so text never hugs the viewport edge.
+   This is intentionally conservative — it should work even if other editorial rules remain. */
+
+/* PLACE TO CHANGE MARGIN BETWEEN ESSAY AND ABOUT SECTIONS */
+.editorial-row {
+  max-width: var(--max);
+  margin: 0 auto 200px;   /* more separation between rows */
+  display: grid !important;
+  grid-template-columns: 1.15fr 0.85fr !important; /* bias: left column slightly larger */
+  gap: 48px !important;               /* space between image and text */
+  align-items: center;
+  box-sizing: border-box;
+}
+
+/* Reverse row: mirror the bias so text column remains inward */
+.editorial-row.reverse {
+  grid-template-columns: 0.85fr 1.15fr !important; /* text on left will sit in the narrower column, leaving internal space */
+}
+
+/* Ensure the image always occupies the first column when not reversed and second when reversed.
+   Using direct-child selectors avoids most conflicts. */
+.editorial-row > .editorial-image { grid-column: 1; }
+.editorial-row > .editorial-text  { grid-column: 2; }
+
+.editorial-row.reverse > .editorial-text  { grid-column: 1; }
+.editorial-row.reverse > .editorial-image { grid-column: 2; }
+
+/* Make images visible and keep them sized responsively */
+.editorial-image {
+  display:block !important;
+  width:100%;
+  min-height: 220px;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+/* Text padding so it never touches the column edge */
+.editorial-text {
+  padding-left: 40px;   /* inward padding toward image for normal layout */
+  padding-right: 20px;
+  max-width: 56ch;
+  box-sizing: border-box;
+}
+
+/* For reversed rows, bias the padding toward the right (so it breathes away from viewport) */
+.editorial-row.reverse .editorial-text {
+  padding-left: 20px;
+  padding-right: 40px;
+}
+
+/* Mobile fallback: stack the image above text */
+@media (max-width: 900px) {
+  .editorial-row,
+  .editorial-row.reverse {
+    grid-template-columns: 1fr !important;
+    gap: 28px !important;
+    margin-bottom: 64px;
+  }
+  .editorial-row > .editorial-image,
+  .editorial-row > .editorial-text {
+    grid-column: 1 !important;
+  }
+  .editorial-text {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+  .editorial-image { min-height: 320px; }
+}
+
+/* ---- Make editorial text "face" the image ---- */
+/* Normal rows: image left, text right -> text block left-aligned toward the image */
+.editorial-row > .editorial-text {
+  justify-self: start;    /* place the text block at the start of its grid cell */
+  text-align: left;       /* align the text lines to the left so they sit toward the image */
+  margin: 0;              /* remove any automatic margins that could offset alignment */
+}
+
+/* Reverse rows: text left, image right -> text block right-aligned toward the image */
+.editorial-row.reverse > .editorial-text {
+  justify-self: end;      /* place the text block at the end of its grid cell */
+  text-align: right;      /* align the text lines to the right so they sit toward the image */
+  margin: 0;
+}
+
+/* Make headings / paragraphs / links inherit alignment */
+.editorial-row .editorial-title,
+.editorial-row .editorial-desc,
+.editorial-row .editorial-more {
+  text-align: inherit;
+}
+
+/* Keep a readable line length and prevent the text block from stretching too wide */
+.editorial-text {
+  max-width: 46ch;        /* tweak this to taste (shorter = chunkier lines) */
+  box-sizing: border-box;
+}
+
+/* Mobile: revert to stacked, left-aligned text for readability */
+@media (max-width: 900px) {
+  .editorial-row > .editorial-text,
+  .editorial-row.reverse > .editorial-text {
+    justify-self: stretch;
+    text-align: left;
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+}
+
