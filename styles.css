@@ -163,9 +163,10 @@ a{ color: inherit; }
 
 .hero-quote blockquote{
   margin: 0 0 14px 0;
-  font-size: clamp(26px, 3vw, 40px);
-  line-height: 1.25;
-  letter-spacing: -.01em;
+font-size: clamp(20px, 2vw, 32px); /* Smaller overall scale */
+line-height: 1.5;                  /* More breathing room between lines */
+letter-spacing: 0.05em;            /* Slight spacing for an airy, elegant feel */
+font-weight: 300;                  /* Light weight is essential for a dainty look */
 }
 
 .hero-quote .attrib{
