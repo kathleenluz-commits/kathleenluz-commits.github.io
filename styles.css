@@ -175,6 +175,21 @@ font-weight: 300;                  /* Light weight is essential for a dainty loo
   letter-spacing: .02em;
 }
 
+.hero-credit{
+  position: absolute;
+  bottom: 28px;
+  left: 48px;          /* pushed further in from the left */
+  z-index: 3;
+
+  font-family: "LegacyBody", Georgia, serif;
+  font-size: 13px;
+  letter-spacing: .02em;   /* reduced tracking */
+  text-transform: none;    /* remove ALL CAPS */
+  opacity: .65;
+
+  color: rgba(239,233,223,.78);
+}
+
 .scroll-indicator{
   position:absolute;
   right: 22px;
