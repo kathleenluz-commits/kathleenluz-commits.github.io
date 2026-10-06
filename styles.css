@@ -1,20 +1,19 @@
-html,
-body {
-  margin: 0;
-  padding: 0;
+html {
   min-height: 100%;
-}
-
-body {
-  min-height: 200vh;
-  width: 100%;
-
-  /* One continuous background behind everything */
+  background-color: #000;
   background-image: url("images/hero.jpg");
   background-position: center top;
   background-repeat: no-repeat;
   background-size: cover;
   background-attachment: fixed;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  min-height: 200vh;
+  background: transparent;
 }
 
 .container {
@@ -27,8 +26,6 @@ header {
   color: white;
   opacity: 0.8;
   padding: 0;
-
-  /* Clears floated navigation elements */
   display: flow-root;
 }
 
