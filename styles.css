@@ -1,6 +1,6 @@
 body{
   background-image: url("images/hero.jpg");
-  background-size:cover;
+  background-size:contain;
   height: 100vh;
   background-color: rgb(45, 45, 45)
 }
