@@ -1,19 +1,31 @@
-html {
-  min-height: 100%;
-  background-color: #000;
-  background-image: url("images/hero.jpg");
-  background-position: center top;
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-attachment: fixed;
-}
-
+html,
 body {
   margin: 0;
   padding: 0;
   width: 100%;
+}
+
+body {
   min-height: 200vh;
-  background: transparent;
+  position: relative;
+  isolation: isolate;
+
+  /* Prevents any second background image */
+  background: #000;
+}
+
+body::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+
+  background-image: url("images/hero.jpg");
+  background-position: top center;
+  background-repeat: no-repeat;
+
+  /* Makes it one continuous image across the whole page */
+  background-size: 100% 100%;
 }
 
 .container {
@@ -66,4 +78,13 @@ nav {
 
 .nav-links li a.active {
   color: white;
+}
+
+main {
+  margin-top: 100px;
+  color: white;
+}
+
+.spacer {
+  height: 1000px;
 }
