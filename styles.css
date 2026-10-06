@@ -26,6 +26,7 @@ body{
       background-repeat: no-repeat;
       /* 'contain' ensures the image isn't cropped, showing top-to-bottom */
       background-size: contain; 
+      background-attachment: scroll
     }
 
 .container {
