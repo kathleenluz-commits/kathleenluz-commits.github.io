@@ -39,7 +39,7 @@ body::before {
 header { 
   color: white; 
   opacity: 0.8; 
-  padding: 10px 0;
+  padding: 0;
   /* FIXED: Clears floated navigation elements safely */
   display: flow-root; 
 } 
