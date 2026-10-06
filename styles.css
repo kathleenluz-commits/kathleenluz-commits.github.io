@@ -80,9 +80,41 @@ nav {
   color: white;
 }
 
+/* Navigation buttons */
+.nav-links li a {
+  display: block;
+  color: white;
+  opacity: 0.9;
+  padding: 18px 24px;
+  font-size: 1.15em;
+  text-decoration: none;
+}
+
+/* Optional button hover effect */
+.nav-links li a:hover {
+  color: white;
+  opacity: 1;
+  background-color: rgba(255, 255, 255, 0.15);
+  border-radius: 5px;
+}
+
 main {
   margin-top: 100px;
+  padding: 0 40px;
   color: white;
+  max-width: 800px;
+}
+
+main h1 {
+  margin-bottom: 25px;
+  line-height: 1.2;
+  letter-spacing: 1px;
+}
+
+main p {
+  margin-bottom: 30px;
+  line-height: 1.8;
+  letter-spacing: 0.5px;
 }
 
 .spacer {
