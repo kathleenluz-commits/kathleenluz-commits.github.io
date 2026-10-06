@@ -63,7 +63,7 @@ nav {
   margin-left: 18px;
 }
 
-.nav-links li a {
+<-- .nav-links li a {
   display: block;
   color: white;
   opacity: 0.8;
@@ -75,12 +75,12 @@ nav {
   color: white;
   opacity: 1;
 }
-
+-->
 .nav-links li a.active {
   color: white;
 }
 
-<--/* Navigation buttons */
+/* Navigation buttons */
 .nav-links li a {
   display: block;
   color: white;
@@ -97,7 +97,6 @@ nav {
   background-color: rgba(255, 255, 255, 0.15);
   border-radius: 5px;
 }
--->
 
 main {
   margin-top: 100px;
