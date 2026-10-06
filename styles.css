@@ -63,7 +63,7 @@ nav {
   margin-left: 18px;
 }
 
-<-- .nav-links li a {
+.nav-links li a {
   display: block;
   color: white;
   opacity: 0.8;
@@ -75,27 +75,9 @@ nav {
   color: white;
   opacity: 1;
 }
--->
+
 .nav-links li a.active {
   color: white;
-}
-
-/* Navigation buttons */
-.nav-links li a {
-  display: block;
-  color: white;
-  opacity: 0.9;
-  padding: 18px 24px;
-  font-size: 1.15em;
-  text-decoration: none;
-}
-
-/* Optional button hover effect */
-.nav-links li a:hover {
-  color: white;
-  opacity: 1;
-  background-color: rgba(255, 255, 255, 0.15);
-  border-radius: 5px;
 }
 
 main {
