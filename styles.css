@@ -80,7 +80,7 @@ nav {
   color: white;
 }
 
-/* Navigation buttons */
+<--/* Navigation buttons */
 .nav-links li a {
   display: block;
   color: white;
@@ -97,6 +97,7 @@ nav {
   background-color: rgba(255, 255, 255, 0.15);
   border-radius: 5px;
 }
+-->
 
 main {
   margin-top: 100px;
