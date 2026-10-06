@@ -10,7 +10,7 @@ body{
       position: relative;
     }
 
-    body::before {
+    body:: before {
       content: '';
       position: absolute;
       top: 0;
@@ -26,7 +26,7 @@ body{
       background-repeat: no-repeat;
       /* 'contain' ensures the image isn't cropped, showing top-to-bottom */
       background-size: contain; 
-      background-attachment: scroll
+      background-attachment: scroll;
     }
 
 .container {
