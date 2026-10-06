@@ -44,7 +44,7 @@ header {
 #nav-logo {
   float: left;
   margin: 20px;
-  font-size: 3em;
+  font-size: 2em;
 }
 
 .nav-links {
@@ -62,8 +62,8 @@ header {
   display: block;
   color: white;
   opacity: 0.8;
-  padding: 18px 24px;
-  font-size: 2em;
+  padding: 14px 16px;
+  font-size: 1.5em;
   text-decoration: none;
 }
 
@@ -75,7 +75,7 @@ header {
 main {
   color: white;
   max-width: 800px;
-  padding: 300px 40px 0;
+  padding: 500px 40px 0;
   margin: 0;
 }
 
